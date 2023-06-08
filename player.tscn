@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://b4r6ywb7x3bb3"]
+
+[ext_resource type="Script" path="res://player.gd" id="1_g37r7"]
+[ext_resource type="Texture2D" uid="uid://bi2iirtofs701" path="res://sprites/characters/player.png" id="1_mavmr"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q2yug"]
+light_mode = 1
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhp8r"]
+radius = 6.0
+height = 18.0
+
+[node name="Player" type="CharacterBody2D"]
+material = SubResource("CanvasItemMaterial_q2yug")
+use_parent_material = true
+script = ExtResource("1_g37r7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+position = Vector2(0, -8)
+texture = ExtResource("1_mavmr")
+hframes = 6
+vframes = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CapsuleShape2D_lhp8r")
+
+[node name="VisibilityTransform" type="RemoteTransform2D" parent="."]
+
+[node name="CameraTransform" type="RemoteTransform2D" parent="."]

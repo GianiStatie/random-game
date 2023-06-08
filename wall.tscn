@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://ddm8e5sweq3yh"]
+
+[ext_resource type="Texture2D" uid="uid://jwv6gag3i1ik" path="res://icon.svg" id="1_22xnh"]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7r77l"]
+polygon = PackedVector2Array(-6, -6, -6, 6, 6, 6, 6, -6)
+
+[node name="Wall" type="Node2D"]
+use_parent_material = true
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
+scale = Vector2(0.1, 0.1)
+texture = ExtResource("1_22xnh")
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_7r77l")

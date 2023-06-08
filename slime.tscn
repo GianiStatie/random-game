@@ -1,0 +1,12 @@
+[gd_scene load_steps=2 format=3 uid="uid://elgh4blpowms"]
+
+[ext_resource type="Texture2D" uid="uid://dr8qjlr1cp77h" path="res://sprites/characters/slime.png" id="1_5kinp"]
+
+[node name="Slime" type="Node2D"]
+use_parent_material = true
+
+[node name="Slime" type="Sprite2D" parent="."]
+use_parent_material = true
+texture = ExtResource("1_5kinp")
+hframes = 7
+vframes = 5
