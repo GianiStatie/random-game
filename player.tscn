@@ -1,30 +1,54 @@
-[gd_scene load_steps=5 format=3 uid="uid://b4r6ywb7x3bb3"]
+[gd_scene load_steps=7 format=3 uid="uid://b4r6ywb7x3bb3"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_g37r7"]
-[ext_resource type="Texture2D" uid="uid://bi2iirtofs701" path="res://sprites/characters/player.png" id="1_mavmr"]
+[ext_resource type="Texture2D" uid="uid://bi67sd1hbd761" path="res://assets/Pixel Crawler - FREE - 1.8/Heroes/Rogue/Idle/Idle-Sheet.png" id="2_dih7s"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_q2yug"]
-light_mode = 1
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vh5gb"]
+
+[sub_resource type="Gradient" id="Gradient_psf2e"]
+offsets = PackedFloat32Array(0, 0.36129, 0.580645)
+colors = PackedColorArray(1, 1, 1, 1, 0.376471, 0.376471, 0.376471, 0.784314, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_82iri"]
+gradient = SubResource("Gradient_psf2e")
+width = 640
+height = 420
+fill = 1
+fill_from = Vector2(0.5, 0.5)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhp8r"]
-radius = 6.0
-height = 18.0
+height = 44.0
 
 [node name="Player" type="CharacterBody2D"]
-material = SubResource("CanvasItemMaterial_q2yug")
-use_parent_material = true
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_g37r7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-use_parent_material = true
-position = Vector2(0, -8)
-texture = ExtResource("1_mavmr")
-hframes = 6
-vframes = 10
+light_mask = 2
+material = SubResource("CanvasItemMaterial_vh5gb")
+position = Vector2(0, -16)
+texture = ExtResource("2_dih7s")
+hframes = 4
+
+[node name="SpriteLight" type="PointLight2D" parent="."]
+visibility_layer = 3
+energy = 0.5
+range_item_cull_mask = 2
+shadow_filter_smooth = 0.3
+texture = SubResource("GradientTexture2D_82iri")
+height = 60.0
+
+[node name="ShadowLight" type="PointLight2D" parent="."]
+visibility_layer = 3
+energy = 0.15
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 0.3
+texture = SubResource("GradientTexture2D_82iri")
+height = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+rotation = 1.5708
 shape = SubResource("CapsuleShape2D_lhp8r")
-
-[node name="VisibilityTransform" type="RemoteTransform2D" parent="."]
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
