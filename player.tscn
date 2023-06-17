@@ -6,8 +6,8 @@
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_vh5gb"]
 
 [sub_resource type="Gradient" id="Gradient_psf2e"]
-offsets = PackedFloat32Array(0, 0.36129, 0.580645)
-colors = PackedColorArray(1, 1, 1, 1, 0.376471, 0.376471, 0.376471, 0.784314, 0, 0, 0, 0)
+offsets = PackedFloat32Array(0, 0.103226, 0.354839, 0.580645)
+colors = PackedColorArray(1, 1, 1, 1, 0.823529, 0.823529, 0.823529, 1, 0.388235, 0.388235, 0.388235, 0.533333, 0, 0, 0, 0)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_82iri"]
 gradient = SubResource("Gradient_psf2e")
@@ -16,15 +16,15 @@ height = 420
 fill = 1
 fill_from = Vector2(0.5, 0.5)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_lhp8r"]
-height = 44.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4t0vf"]
+size = Vector2(8, 16)
 
 [node name="Player" type="CharacterBody2D"]
 scale = Vector2(0.5, 0.5)
 script = ExtResource("1_g37r7")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-light_mask = 2
+light_mask = 3
 material = SubResource("CanvasItemMaterial_vh5gb")
 position = Vector2(0, -16)
 texture = ExtResource("2_dih7s")
@@ -48,7 +48,8 @@ texture = SubResource("GradientTexture2D_82iri")
 height = 60.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.448e-05, -4)
 rotation = 1.5708
-shape = SubResource("CapsuleShape2D_lhp8r")
+shape = SubResource("RectangleShape2D_4t0vf")
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]

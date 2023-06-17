@@ -21,6 +21,11 @@ window/size/window_width_override=1040
 window/size/window_height_override=640
 window/stretch/mode="canvas_items"
 
+[layer_names]
+
+2d_render/layer_1="Refelctions"
+2d_render/layer_2="Shadows"
+
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
