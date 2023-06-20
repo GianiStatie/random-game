@@ -3,9 +3,13 @@ extends Node2D
 @onready var tilemap = $TileMap
 
 var wall_extension_mapping = {
-	"(0, 2)": [Vector2(8, 3), Vector2(8, 4)],
-	"(1, 2)": [Vector2(9, 3), Vector2(9, 4)],
-	"(2, 2)": [Vector2(10, 3), Vector2(10, 4)],
+	"(0, 2)": [Vector2(8, 1), Vector2(8, 2)], # wall-extension-left
+	"(1, 2)": [Vector2(9, 1), Vector2(9, 2)], # wall-extension-center
+	"(2, 2)": [Vector2(10, 1), Vector2(10, 2)], # wall-extension-right
+	"(3, 5)": [Vector2(3, 6), Vector2(3, 7)], # closed-door-extension-left
+	"(4, 5)": [Vector2(4, 6), Vector2(4, 7)], # closed-door-extension-right
+	"(5, 5)": [Vector2(5, 6), Vector2(5, 7)], # closed-door-extension-right
+	"(6, 5)": [Vector2(6, 6), Vector2(6, 7)], # closed-door-extension-right
 }
 
 const wall_layer_idx = 1

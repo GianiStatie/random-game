@@ -26,30 +26,35 @@ script = ExtResource("1_g37r7")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 3
 material = SubResource("CanvasItemMaterial_vh5gb")
-position = Vector2(0, -16)
 texture = ExtResource("2_dih7s")
 hframes = 4
+metadata/_edit_lock_ = true
 
 [node name="SpriteLight" type="PointLight2D" parent="."]
 visibility_layer = 3
+position = Vector2(0, 12)
 energy = 0.5
 range_item_cull_mask = 2
 shadow_filter_smooth = 0.3
 texture = SubResource("GradientTexture2D_82iri")
 height = 60.0
+metadata/_edit_lock_ = true
 
 [node name="ShadowLight" type="PointLight2D" parent="."]
 visibility_layer = 3
+position = Vector2(0, 12)
 energy = 0.15
 shadow_enabled = true
 shadow_filter = 1
 shadow_filter_smooth = 0.3
 texture = SubResource("GradientTexture2D_82iri")
 height = 60.0
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1.448e-05, -4)
+position = Vector2(0, 12)
 rotation = 1.5708
 shape = SubResource("RectangleShape2D_4t0vf")
+metadata/_edit_lock_ = true
 
 [node name="CameraTransform" type="RemoteTransform2D" parent="."]
