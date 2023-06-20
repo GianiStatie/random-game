@@ -1,11 +1,11 @@
 extends CharacterBody2D
 
 
-const SPEED = 160.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 80.0
 
-# Get the gravity from the project settings to be synced with RigidBody nodes.
-var gravity = ProjectSettings.get_setting("physics/2d/default_gravity")
+@onready var sprite = $Sprite2D
+@onready var animationTree = $AnimationTree
+@onready var animationState = animationTree.get("parameters/playback")
 
 
 func _physics_process(delta):
@@ -16,10 +16,18 @@ func _physics_process(delta):
 	direction.y = Input.get_axis("ui_up", "ui_down")
 	direction = direction.normalized()
 	
+	if abs(direction.x) != 0:
+		sprite.scale.x = sign(direction.x) 
+	
 	if direction:
 		velocity = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 		velocity.y = move_toward(velocity.y, 0, SPEED)
+	
+	if velocity == Vector2.ZERO:
+		animationState.travel("Idle")
+	else:
+		animationState.travel("Run")
 
 	move_and_slide()
