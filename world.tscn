@@ -28,6 +28,12 @@ y_sort_enabled = true
 [node name="Player" parent="Map" instance=ExtResource("1_kh6f1")]
 position = Vector2(-46, 17)
 
+[node name="SpriteLight" parent="Map/Player" index="1"]
+metadata/_edit_lock_ = true
+
+[node name="ShadowLight" parent="Map/Player" index="2"]
+metadata/_edit_lock_ = true
+
 [node name="CameraTransform" parent="Map/Player" index="4"]
 remote_path = NodePath("../../../Camera2D")
 
@@ -35,8 +41,8 @@ remote_path = NodePath("../../../Camera2D")
 y_sort_enabled = true
 material = ExtResource("4_3fljv")
 
-[node name="Enemy" parent="Map/Enemies" instance=ExtResource("6_h7cig")]
-position = Vector2(26, -45)
+[node name="CharacterBody2D" parent="Map/Enemies" instance=ExtResource("6_h7cig")]
+position = Vector2(34, -48)
 
 [node name="Node2D" type="Node2D" parent="Map"]
 position = Vector2(3, 0)

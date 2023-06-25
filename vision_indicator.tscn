@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c3fon0atdh51h"]
+
+[ext_resource type="Texture2D" uid="uid://cm0rp1ovcrpu8" path="res://assets/Icons/icon29-sheet.png" id="1_2e0vw"]
+
+[node name="VisionIndicator" type="Node2D"]
+
+[node name="Grayed" type="Sprite2D" parent="."]
+texture = ExtResource("1_2e0vw")
+hframes = 7
+frame = 6

@@ -1,12 +1,81 @@
-[gd_scene load_steps=2 format=3 uid="uid://elgh4blpowms"]
+[gd_scene load_steps=9 format=3 uid="uid://elgh4blpowms"]
 
 [ext_resource type="Texture2D" uid="uid://dhyhlwxhophew" path="res://assets/Pixel Crawler - FREE - 1.8/Enemy/Skeleton Crew/Skeleton - Base/Idle/Idle-Sheet.png" id="1_kuo5r"]
 
-[node name="Enemy" type="Node2D"]
-use_parent_material = true
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qccm5"]
+size = Vector2(4.00001, 8.00001)
 
-[node name="Sprite" type="Sprite2D" parent="."]
+[sub_resource type="Animation" id="Animation_phruk"]
+resource_name = "Idle"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_uslbr"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_4sldc"]
+_data = {
+"Idle": SubResource("Animation_phruk"),
+"RESET": SubResource("Animation_uslbr")
+}
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_rna03"]
+animation = &"Idle"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_1qxcw"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_e8kco"]
+states/Idle/node = SubResource("AnimationNodeAnimation_rna03")
+states/Idle/position = Vector2(336, 99)
+states/Start/position = Vector2(183, 99)
+transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_1qxcw")]
+
+[node name="CharacterBody2D" type="CharacterBody2D"]
 use_parent_material = true
 scale = Vector2(0.5, 0.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+use_parent_material = true
 texture = ExtResource("1_kuo5r")
 hframes = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-1.99999, 12)
+rotation = 1.5708
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_qccm5")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_4sldc")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_e8kco")
+anim_player = NodePath("../AnimationPlayer")
+active = true
